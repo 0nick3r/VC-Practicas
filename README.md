@@ -1,6 +1,6 @@
 # Visión por Computador - Prácticas de Laboratorio
 
-Repositorio general de prácticas para la asignatura **Visión por Computador** del Grado de Ingeniería Informática (ULPGC).
+Repositorio general de prácticas para la asignatura **Visión por Computador** del Grado en Ingeniería Informática (ULPGC).
 
 ## Estructura del Repositorio
 
