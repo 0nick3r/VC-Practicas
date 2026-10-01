@@ -43,3 +43,10 @@ Conforme a las directrices de la asignatura, se declara el uso de herramientas d
 * La optimización del ensamblado matricial con NumPy para evitar el uso de bucles e índices manuales.
 * La comprensión de los mapas de colores para la correcta aplicación de falso color en OpenCV.
 * El diseño de funciones espaciales para automatizar la simetría geométrica en la generación del tablero.
+
+## Contribuidores
+| Nombre | GitHub |
+| :--- | ---: |
+| Ricardo García Rodríguez | [Ricardo428](https://github.com/Ricardo428) |
+| Juan Daniel López Melainine | [0nick3r](https://github.com/0nick3r) |
+
