@@ -17,3 +17,10 @@ Para ejecutar los cuadernos interactivos de este repositorio se requiere un ento
 
 ```bash
 pip install opencv-python numpy matplotlib Pillow
+```
+
+## Contribuidores
+| Nombre | GitHub |
+| :--- | ---: |
+| Ricardo García Rodríguez | [Ricardo428](https://github.com/Ricardo428) |
+| Juan Daniel López Melainine | [0nick3r](https://github.com/0nick3r) |

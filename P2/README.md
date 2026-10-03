@@ -46,3 +46,9 @@ Conforme a las directrices de la asignatura, se declara el uso de herramientas d
 * La optimización del flujo de conversión de espacios de color entre las matrices de NumPy (OpenCV) y los objetos de dibujo de Pillow.
 * La comprensión lógica del análisis estadístico de proyecciones horizontales y verticales sobre matrices de gradiente.
 * El ajuste de los parámetros de contornos y supresión de ruido en la detección de movimiento por sustracción de fondo.
+
+## Contribuidores
+| Nombre | GitHub |
+| :--- | ---: |
+| Ricardo García Rodríguez | [Ricardo428](https://github.com/Ricardo428) |
+| Juan Daniel López Melainine | [0nick3r](https://github.com/0nick3r) |
