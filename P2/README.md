@@ -23,12 +23,63 @@ El proyecto se organiza de la siguiente manera:
 
 El cuaderno respeta la progresión del guion oficial para dar cumplimiento a las tareas exigidas, incorporando un demostrador interactivo propio:
 
-* **Tarea - Cuenta de píxeles blancos por filas en Canny:** Conteo de píxeles no nulos por filas sobre la imagen procesada por Canny, determinación del valor máximo (`maxfil`) y resaltado mediante primitivas gráficas de las filas que superan o igualan el 0.90 del máximo.
+* **Tarea 1 - Cuenta de píxeles blancos por filas en Canny:** Conteo de píxeles no nulos por filas sobre la imagen procesada por Canny, determinación del valor máximo (`maxfil`) y resaltado mediante primitivas gráficas de las filas que superan o igualan el 0.90 del máximo.
+
+  El nucleo del código realiza un bucle recorriendo en este caso las filas. 
+  ```python
+  filas_posiciones = []
+  for i in range(rows_counts.shape[0]):
+    # Resalta las filas que superan el 90% del valor máximo de píxeles blancos
+    if (maximo * 0.9 <= rows_counts[i][0]):
+        filas_posiciones.append(i)  # Guardar la posición de la fila resaltada
+        cv2.line(canny_resaltado, (0, i), (canny.shape[1]-1, i), (255, 0, 0), 1)  # Dibuja línea azul en la fila resaltada
+
+    rows[i][0] = (rows_counts[i][0] / (255 * canny.shape[1]))
+  ```
+
   ![Tarea 1](assets/Tarea1.png)
 
-* **Tarea - Gradiente de Sobel y Conteo Bidireccional:** Aplicación de umbralizado a la imagen resultante de Sobel (convertida a 8 bits), conteo por filas y columnas, cálculo de los valores máximos y marcado de las líneas que superan el 0.90 del máximo sobre la imagen del mandril, comparando los resultados frente a Canny.
 
-* **Demostrador Propio - Reinterpretación de "My Little Piece of Privacy":** Sistema interactivo en tiempo real basado en sustracción de fotogramas (`cv2.absdiff`) y umbralizado. Al detectar movimiento, genera dinámicamente un bloque de censura opaco con la etiqueta tipográfica de alta calidad renderizada mediante Pillow (`PIL`).
+* **Tarea 2  - Gradiente de Sobel y Conteo Bidireccional:** Aplicación de umbralizado a la imagen resultante de Sobel (convertida a 8 bits), conteo por filas y columnas, cálculo de los valores máximos y marcado de las líneas que superan el 0.90 del máximo sobre la imagen del mandril, comparando los resultados frente a Canny.
+
+  Bucle en filas que guarda las pocisiones y pinta linea en la imagen final.
+  ```python
+    for i in range(col_counts.shape[1]):
+      # Resalta las filas que superan el 90% del valor máximo de píxeles blancos
+      if (maximo_col * 0.9 <= col_counts[0][i]):
+          filas_posiciones_col.append(i)  # Guardar la posición de la fila resaltada
+          cv2.line(img, (i, 0), (i, sobel8Umbralizada.shape[0]-1), (255, 255, 0), 1)  # Dibuja línea amarilla en la fila resaltada
+  ```
+  ![Tarea 2](assets/tarea2columnas.png)
+
+
+
+  Bucle en columnas que guarda las pocisiones y pinta linea en la imagen final.
+  ```python
+  for i in range(rows_counts.shape[0]):
+    # Resalta las filas que superan el 90% del valor máximo de píxeles blancos
+    if (maximo_row * 0.9 <= rows_counts[i][0]):
+        filas_posiciones_row.append(i)  # Guardar la posición de la fila resaltada
+        cv2.line(img, (0, i), (sobel8Umbralizada.shape[1]-1, i), (255, 0, 0), 1)  # Dibuja línea en la fila resaltada
+
+    rows[i][0] = (rows_counts[i][0] / (255 * sobel8Umbralizada.shape[1]))
+  ```
+
+  ![Tarea 2](assets/tarea2filas.png)
+
+  ![Tarea 2](assets/tarea2filasYcolumnas.png)
+
+
+
+* **Tarea 3 - Demostrador Propio - Reinterpretación de "My Little Piece of Privacy":** Sistema interactivo en tiempo real basado en sustracción de fotogramas (`cv2.absdiff`) y umbralizado. Al detectar movimiento, genera dinámicamente un bloque de censura opaco.
+
+  * **Ampliación 1 - Demostrador Cara de gato:**  Sistema interactivo en tiempo real basado en sustracción de fotogramas (`cv2.absdiff`) y umbralizado. Al detectar movimiento, genera la cara de un gato conseguida dibujando formas geométricas.
+
+  ![Tarea 2](assets/Video o GIF.png)
+
+  * **Ampliación 2 - Demostrador Detector de movimiento** Sistema interactivo en tiempo real basado en sustracción de fotogramas (`cv2.absdiff`) y umbralizado. Este sistema genera un pitido si el movimiento capturado supera un cierto rango.
+
+  ![Tarea 2](assets/Video o GIF.png)
 
 
 ## Instrucciones de Uso
