@@ -95,7 +95,7 @@ El cuaderno respeta la progresión del guion oficial para dar cumplimiento a las
           draw.rectangle(((x, y), (x + w, y + h)), fill="black")
   ```
 
-  <video src="assets/privacidad.mp4" width="100%" controls></video>
+  [Tarea 3](assets/privacidad.mp4)
 
   * **Ampliación 1 - Demostrador Cara de gato:**  Sistema interactivo en tiempo real basado en sustracción de fotogramas (`cv2.absdiff`) y umbralizado. Al detectar movimiento, genera la cara de un gato conseguida dibujando formas geométricas.
  
@@ -133,7 +133,7 @@ El cuaderno respeta la progresión del guion oficial para dar cumplimiento a las
           draw.line([(x + w//2, y + h - 25), (x + w, y + h)], fill="black", width=3)  # Bigote derecho
   ```
 
-  <video src="assets/cara_gato.mp4" width="100%" controls></video>
+  [Tarea 3 Ampliación 1](assets/cara_gato.mp4)
 
   * **Ampliación 2 - Demostrador Detector de movimiento** Sistema interactivo en tiempo real basado en sustracción de fotogramas (`cv2.absdiff`) y umbralizado. Este sistema genera un pitido si el movimiento capturado supera un cierto rango.
 
@@ -155,7 +155,7 @@ El cuaderno respeta la progresión del guion oficial para dar cumplimiento a las
     cv2.rectangle(frame, (0, 0), (frame.shape[1] - 1, frame.shape[0] - 1), (0, 0, 255), 8)
   ```
 
-  <video src="assets/alarma_movimiento.mp4" width="100%" controls></video>
+  [Tarea 3 Ampliación 2](assets/alarma_movimiento.mp4)
 
 ## Instrucciones de Uso
 
