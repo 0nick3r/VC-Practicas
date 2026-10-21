@@ -122,8 +122,6 @@ El cuaderno respeta la progresión del guion oficial para dar cumplimiento a las
       return [area, perimetro, aspect_ratio, compacidad, extent, brillo_medio]
   ```
 
-  ![Tarea 3 Segmentacion](assets/Tarea3_Segmentacion.png)
-
   **Evaluación de Rendimiento mediante Matriz de Confusión:** Generación de la gráfica a partir de las predicciones dadas por el sistema basado en heurísticas al evaluarse sobre la imagen `MPs_test.jpg`.
   
   ```python
@@ -140,7 +138,7 @@ El cuaderno respeta la progresión del guion oficial para dar cumplimiento a las
   plt.show()
   ```
 
-  ![Tarea 3 Matriz Confusion](assets/Tarea2_Matriz.png)
+  ![Tarea 2.2 Matriz Confusion](assets/Tarea2_Matriz.png)
 
 
 ## Instrucciones de Uso
