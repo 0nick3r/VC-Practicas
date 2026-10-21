@@ -54,7 +54,7 @@ El cuaderno respeta la progresión del guion oficial para dar cumplimiento a las
   print(f"Dinero total: {dinero_total:.2f} euros")
   ```
 
-  ![Tarea 1.1](assets/Tarea1_1.png)
+  ![Tarea 1.1](assets/Tarea1_1.jpg)
 
 
 - **Tarea 1.2 - Demostrador en Vivo de Conteo de Monedas:** Aplicación en tiempo real del algoritmo anterior sobre el flujo de vídeo de la cámara web. Tras una calibración inicial, el sistema dibuja los contornos y actualiza la cantidad de euros en pantalla frame a frame.
