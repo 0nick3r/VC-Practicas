@@ -34,8 +34,9 @@ Para evaluar el proyecto correctamente y asegurar la estabilidad del entorno:
 
 1. Clonar el repositorio y asegurar que los modelos `.pt` (`yolo11n.pt` y el modelo entrenado de matrículas) se encuentren en la raíz del proyecto.
 2. Iniciar la sesión en Jupyter Notebook y abrir el archivo `VC_P4.ipynb`.
-3. Ejecutar las celdas de forma secuencial. El procesamiento del vídeo está configurado sin `show=True` por cada frame interno para no colapsar la RAM de Jupyter.
-4. El proceso generará automáticamente el vídeo renderizado final y el archivo `detecciones_matriculas.csv` en el directorio de trabajo. Para detener un proceso en vivo (webcam), presionar la tecla `ESC`.
+3. Descargar el archivo de test [video](https://drive.google.com/file/d/1jQa2iCTIDOyzp85Me7nk2g7a3YAy2zcL/view?usp=sharing) y añadirlo a la carpeta assets.
+4. Ejecutar las celdas de forma secuencial. El procesamiento del vídeo está configurado sin `show=True` por cada frame interno para no colapsar la RAM de Jupyter.
+5. El proceso generará automáticamente el vídeo renderizado final y el archivo `detecciones_matriculas.csv` en el directorio de trabajo. Para detener un proceso en vivo (webcam), presionar la tecla `ESC`.
 
 ## Declaración de Uso de IA
 
