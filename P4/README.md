@@ -20,7 +20,7 @@ El proyecto se organiza de la siguiente manera:
 - **`VC_P4.ipynb`**: Cuaderno principal que contiene el pipeline de detección general, extracción de matrículas, seguimiento de objetos y generación de reportes (CSV y Vídeo).
 - **`runs/`**: Directorio generado automáticamente por YOLO que almacena las gráficas de validación, matrices de confusión y métricas del entrenamiento del modelo de matrículas.
 - **`assets/`**: Directorio destinado a almacenar capturas de demostración y resultados visuales para este documento.
-- **`datasets/`**: Carpeta (o enlace) con las imágenes y etiquetas `.txt` utilizadas para el entrenamiento del detector de matrículas.
+- **`datasets/`**: Carpeta (o enlace) con las imágenes y etiquetas `.txt` utilizadas para el entrenamiento del detector de matrículas. [Enlace al dataset](https://drive.google.com/drive/folders/1RFd6sKH_QMQcpE_w5rWmy8rKiYUY5_SI)
 - **`detecciones_matriculas.csv`**: Archivo de salida con el registro frame a frame de los objetos seguidos.
 
 ## Desarrollo de las Tareas y Demostrador
