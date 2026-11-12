@@ -188,6 +188,7 @@ Para evaluar el proyecto correctamente y asegurar la estabilidad del entorno:
 3. Descargar el archivo de test [video](https://drive.google.com/file/d/1jQa2iCTIDOyzp85Me7nk2g7a3YAy2zcL/view?usp=sharing) y añadirlo a la carpeta assets.
 4. Ejecutar las celdas de forma secuencial. El procesamiento del vídeo está configurado sin `show=True` por cada frame interno para no colapsar la RAM de Jupyter.
 5. El proceso generará automáticamente un vídeo renderizado final y un archivo dependiendo del modelo de OCR usado en el directorio assets. Para detener un proceso en vivo (webcam), presionar la tecla `ESC`.
+6. Si se quiere ejecutar las comparativas se debe descargar la carpeta con las 50 imagenes [enlace](https://drive.google.com/drive/folders/1sCZJWR31f8fEuQ8b2OPxuRr-yUnVXdTW?usp=sharing)
 
 
 ## Declaración de Uso de IA
