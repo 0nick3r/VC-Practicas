@@ -2,7 +2,8 @@
 
 Repositorio de la Práctica 4 (Parte A - Detección) de la asignatura Visión por Computador (ULPGC). El proyecto, desarrollado mediante el cuaderno interactivo `VC_P4.ipynb`, implementa un sistema automatizado de videovigilancia capaz de detectar y realizar seguimiento (tracking) de personas y vehículos, extraer la región de interés (ROI) de los coches y localizar sus matrículas utilizando modelos personalizados basados en redes neuronales (YOLO / RT-DETR).
 
----
+
+<br>
 
 ## Estructura y Requisitos
 
@@ -17,7 +18,7 @@ pip install lapx
 pip install paddlepaddle paddleocr
 pip install transformers
 ```
-
+<br>
 El proyecto se organiza de la siguiente manera:
 
 | Archivo / carpeta | Contenido |
@@ -28,7 +29,8 @@ El proyecto se organiza de la siguiente manera:
 | `fotos/` | Imágenes de test usadas en la comparativa. El nombre de cada archivo es su matrícula real. |
 | `assets/` | Vídeo de test y resultados obtenidos de las ejecuciones (csv / mp4 ). |
 
----
+<br>
+<br>
 
 ## Desarrollo de las Tareas y Demostrador
 
@@ -80,29 +82,29 @@ def preparar_recorte(img):
     return cv2.copyMakeBorder(img, 10, 10, 10, 10, cv2.BORDER_REPLICATE)
 ```
 
-**PaddleOCR** devuelve el texto en varios fragmentos (por ejemplo `"1234"` y `"ABC"`), que se unen y se limpian:
- 
-```python
-result = ocr.predict(matricula_recortada)[0]
-crudo = re.sub(r'[^A-Z0-9]', '', ''.join(result['rec_texts']).upper())
-```
+- **PaddleOCR** devuelve el texto en varios fragmentos (por ejemplo `"1234"` y `"ABC"`), que se unen y se limpian:
+    
+    ```python
+    result = ocr.predict(matricula_recortada)[0]
+    crudo = re.sub(r'[^A-Z0-9]', '', ''.join(result['rec_texts']).upper())
+    ```
 
-**SmolVLM** Funciona como un chat: recibe la imagen junto a una instrucción y genera la respuesta.
+- **SmolVLM** Funciona como un chat: recibe la imagen junto a una instrucción y genera la respuesta.
  
-```python
-PROMPT = "Read the license plate in this image. Answer only with the letters and numbers of the plate."
+    ```python
+    PROMPT = "Read the license plate in this image. Answer only with the letters and numbers of the plate."
+    
+    def leer_matricula_vlm(img_bgr):
+        imagen = Image.fromarray(cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB))
+        mensajes = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": PROMPT}]}]
+        prompt = processor.apply_chat_template(mensajes, add_generation_prompt=True)
+        inputs = processor(text=prompt, images=[imagen], return_tensors="pt").to(Device, dtype=DTYPE)
+        salida = model_ocr.generate(**inputs, max_new_tokens=15, do_sample=False)
+        nuevos = salida[:, inputs["input_ids"].shape[1]:]
+        return processor.batch_decode(nuevos, skip_special_tokens=True)[0].strip()
+    ```
  
-def leer_matricula_vlm(img_bgr):
-    imagen = Image.fromarray(cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB))
-    mensajes = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": PROMPT}]}]
-    prompt = processor.apply_chat_template(mensajes, add_generation_prompt=True)
-    inputs = processor(text=prompt, images=[imagen], return_tensors="pt").to(Device, dtype=DTYPE)
-    salida = model_ocr.generate(**inputs, max_new_tokens=15, do_sample=False)
-    nuevos = salida[:, inputs["input_ids"].shape[1]:]
-    return processor.batch_decode(nuevos, skip_special_tokens=True)[0].strip()
-```
- 
-En los dos casos, la lectura se valida con el **formato de matrícula español**. Así se descartan lecturas erróneas y caracteres sueltos, como la "E" de la franja azul:
+En los dos casos, la lectura se valida con el **formato de matrícula español**.
  
 ```python
 patrones_matricula = [re.compile(r'\d{4}[A-Z]{3}'),                
@@ -128,7 +130,8 @@ El CSV contiene una fila por cada objeto detectado en cada fotograma:
 | `matrícula_en_su_caso`, `confianza` | 1 si se ha detectado matrícula, y confianza de esa detección. |
 | `mx1, my1, mx2, my2` | Caja de la matrícula en el fotograma. |
 | `texto_matricula` | Matrícula leída por el OCR. |
- 
+
+<br> 
  
 Recuento de objetos distintos en el vídeo de test:
 
@@ -140,14 +143,15 @@ Recuento de objetos distintos en el vídeo de test:
 | Autobús | 1 |
 | Camión | 3 |
  
----
+<br>
 
 ## Comparativa OCR clásico vs VLM
  
 ### Conjunto de prueba
  
-Se han usado **XX imágenes** del conjunto de test del dataset de matrículas. Se ha anotado a mano renombrando cada imagen con su matrícula (`1234ABC.jpg`), y se han descartado las imágenes en las que la matrícula no era legible a simple vista.
+Se han usado **50 imágenes** del conjunto de test del dataset de matrículas. Se ha anotado a mano renombrando cada imagen con su matrícula (`1234ABC.jpg`), y se han descartado las imágenes en las que la matrícula no era legible a simple vista.
 
+<br>
 
 ### Máquina de pruebas
  
@@ -158,6 +162,8 @@ Se han usado **XX imágenes** del conjunto de test del dataset de matrículas. S
 | GPU | NVIDIA GeForce RTX 5060 |
 | Dispositivo usado | cuda |
 
+<br>
+
 ## Resultados
 
 Se consideran dos métricas:
@@ -165,18 +171,22 @@ Se consideran dos métricas:
 - **Tasa de acierto**: porcentaje de matrículas leídas completas y sin errores.
 - **Tiempo medio de inferencia**: milisegundos por matrícula.
 
+<br>
+
 | Modelo | Nº imagenes | % Aciertos | Tiempo medio |
 | :--- | :--- | :--- | :--- |
 | PaddleOCR | 50 imágenes | 40.0 % | 829 ms |
-| PaddleOCR | 50 imágenes | 86.0 % | 548 ms |
+| SmolVLM | 50 imágenes | 86.0 % | 548 ms |
 
 
 ### Conclusiones
- 
+---
 SmolVLM ha obtenido mejores resultados en las dos métricas. Acierta el 86 % de las matrículas frente al 40 % de PaddleOCR, más del doble, y además es aproximadamente 1,5 veces más rápido (548 ms frente a 829 ms por matrícula)
 
 Por estos resultados, se ha elegido SmolVLM como OCR del sistema.
----
+
+
+<br>
 
 
 ## Instrucciones de Uso
@@ -190,11 +200,13 @@ Para evaluar el proyecto correctamente y asegurar la estabilidad del entorno:
 5. El proceso generará automáticamente un vídeo renderizado final y un archivo dependiendo del modelo de OCR usado en el directorio assets. Para detener un proceso en vivo (webcam), presionar la tecla `ESC`.
 6. Si se quiere ejecutar las comparativas se debe descargar la carpeta con las 50 imagenes [enlace](https://drive.google.com/drive/folders/1sCZJWR31f8fEuQ8b2OPxuRr-yUnVXdTW?usp=sharing)
 
+<br>
 
 ## Declaración de Uso de IA
 
-Conforme a las directrices de la asignatura, se declara el uso de herramientas de Inteligencia Artificial bajo un rol estricto de consultoría técnica. Su aplicación se ha limitado a:
+Conforme a las directrices de la asignatura, se declara el uso de herramientas de Inteligencia Artificial bajo un rol estricto de consultoría técnica.
 
+<br>
 
 ## Contribuidores
 | Nombre | GitHub |
