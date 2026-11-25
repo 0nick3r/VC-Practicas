@@ -11,6 +11,7 @@ El repositorio está organizado por directorios independientes para cada una de 
 | [**P1**](./P1/) | **Práctica 1** | Primeros pasos con OpenCV |
 | [**P2**](./P2/) | **Práctica 2** | Funciones básicas de OpenCV |
 | [**P3**](./P3/) | **Práctica 3** | Detección y reconocimiento de formas |
+| [**P4**](./P4)  | **Práctica 4** | Detección de vehículos y reconocimiento de caracteres en matrículas | 
 
 ## Requisitos Globales
 
