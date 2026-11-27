@@ -175,7 +175,7 @@ Se usa **MediaPipe Face Landmarker**, que da 478 landmarks y 52 coeficientes de 
 
 ## Declaración de Uso de IA
 
-Se ha utilizado Claude (Anthropic) como asistente durante la práctica: para revisar, depurar y refactorizar el código del prototipo 2, y para redactar este README. El diseño de los prototipos, el entrenamiento de los modelos, la ejecución de los experimentos y la revisión de los resultados han sido realizados por los autores.
+Se ha utilizado Claude y Gemini como asistente durante la práctica: para revisar, depurar y refactorizar el código y para pulir el README. El diseño de los prototipos, el entrenamiento de los modelos, la ejecución de los experimentos y la revisión de los resultados han sido realizados por los autores Ricardo García Rodríguez y Juan Daniel López Melainine.
 
 <br>
 
